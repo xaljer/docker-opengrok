@@ -20,6 +20,5 @@ RUN apk add --no-cache --virtual .ctag-build-deps gcc g++ make \
   && mv opengrok-* $OPENGROK_DIRECTORY \
   && apk del .opengrok-install-deps \
   && mkdir -p $OPENGROK_INSTANCE_BASE \
-  && cd $OPENGROK_DIRECTORY/bin \
-  && OPENGROK_TOMCAT_BASE=$CATALINA_HOME ./OpenGrok deploy
+  && OPENGROK_TOMCAT_BASE=$CATALINA_HOME $OPENGROK_DIRECTORY/bin/OpenGrok deploy
 
