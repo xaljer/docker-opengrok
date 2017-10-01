@@ -7,13 +7,13 @@ The one-liner to spin up a code search engine
 ### run
 
 ```sh
-$ docker run -d -v [path/to/source]:/src -p [public port]:8080 --name kazunobufujii/opengrok opengrok
+$ docker run -d -v [path/to/source]:/src -p [public port]:8080 --name opengrok kazunobufujii/opengrok
 ```
 
 ### reindex
 
 ```sh
-$ docker exec -it opengrok /usr/OpenGrok/bin/OpenGrok index /src
+$ docker exec -it opengrok /usr/opengrok/bin/OpenGrok index /src
 ```
 
 ### view
