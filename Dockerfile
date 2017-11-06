@@ -1,6 +1,7 @@
 FROM tomcat:9-alpine
 MAINTAINER fujii.kazunobu@gmail.com
 
+ARG OPENGROK_VERSION 1.1-rc16
 ENV OPENGROK_DIRECTORY /usr/opengrok
 ENV OPENGROK_INSTANCE_BASE /var/opengrok
 
@@ -16,7 +17,7 @@ RUN apk add --no-cache --virtual .ctag-build-deps gcc g++ make \
   && apk del .ctag-build-deps \
   && apk add --no-cache --virtual .opengrok-install-deps ca-certificates openssl \
   && cd / \
-  && wget -O - https://github.com/OpenGrok/OpenGrok/releases/download/1.0/opengrok-1.0.tar.gz | tar zxvf - \
+  && wget -O - https://github.com/OpenGrok/OpenGrok/releases/download/$OPENGROK_VERSION/opengrok-$OPENGROK_VERSION.tar.gz | tar zxvf - \
   && mv opengrok-* $OPENGROK_DIRECTORY \
   && apk del .opengrok-install-deps \
   && mkdir -p $OPENGROK_INSTANCE_BASE \
