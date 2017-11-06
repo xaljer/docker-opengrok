@@ -1,9 +1,10 @@
 FROM tomcat:9-alpine
-MAINTAINER fujii.kazunobu@gmail.com
+LABEL maintainer="xaljer@outlook.com"
 
 ENV OPENGROK_DIRECTORY /usr/opengrok
 ENV OPENGROK_INSTANCE_BASE /var/opengrok
 
+RUN apk add --no-cache git subversion mercurial
 RUN apk add --no-cache --virtual .ctag-build-deps gcc g++ make \
   && cd / \
   && wget -O - http://hp.vector.co.jp/authors/VA025040/ctags/downloads/ctags-5.8j2.tar.gz | tar zxvf - \
