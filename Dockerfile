@@ -6,17 +6,17 @@ ENV OPENGROK_DIRECTORY /usr/opengrok
 ENV OPENGROK_INSTANCE_BASE /var/opengrok
 
 RUN apk add --no-cache git subversion mercurial
-RUN apk add --no-cache --virtual .ctag-build-deps gcc g++ make \
+RUN apk add --no-cache --virtual .ctag-build-deps gcc g++ make automake autoconf \
   && cd / \
-  && wget -O - http://hp.vector.co.jp/authors/VA025040/ctags/downloads/ctags-5.8j2.tar.gz | tar zxvf - \
-  && mv ctags-* ctags \
-  && cd /ctags/ \
-  && ./configure \
+  && git clone --depth 1 https://github.com/universal-ctags/ctags.git \
+  && cd /ctags/   \
+  && ./autogen.sh \
+  && ./configure  \
   && make \
-  && make install \
+  && make install  \
   && rm -rf /ctags \
-  && apk del .ctag-build-deps \
-  && apk add --no-cache --virtual .opengrok-install-deps ca-certificates openssl \
+  && apk del .ctag-build-deps
+RUN apk add --no-cache --virtual .opengrok-install-deps ca-certificates openssl \
   && cd / \
   && wget -O - https://github.com/OpenGrok/OpenGrok/releases/download/$OPENGROK_VERSION/opengrok-$OPENGROK_VERSION.tar.gz | tar zxvf - \
   && mv opengrok-* $OPENGROK_DIRECTORY \
