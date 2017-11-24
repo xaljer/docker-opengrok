@@ -18,7 +18,7 @@ xaljer/docker-opengrok
 ### reindex
 
 ```sh
-$ docker exec -it opengrok /usr/opengrok/bin/OpenGrok index /src
+$ docker exec -it opengrok OpenGrok index /src
 ```
 
 ### view
