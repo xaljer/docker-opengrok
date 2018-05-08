@@ -1,7 +1,7 @@
 FROM tomcat:9-alpine
 LABEL maintainer="xaljer@outlook.com"
 
-ARG OPENGROK_VERSION=1.1-rc16
+ARG OPENGROK_VERSION=1.1-rc25
 ENV OPENGROK_DIRECTORY /usr/opengrok
 ENV OPENGROK_INSTANCE_BASE /var/opengrok
 ENV PATH="$PATH:/usr/opengrok/bin"
