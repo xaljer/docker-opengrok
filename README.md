@@ -29,7 +29,7 @@ $ docker exec -it opengrok OpenGrok index /src
 ```sh
 version: '2'
 
-service:
+services:
   opengrok:
     image: 'xaljer/docker-opengrok'
     restart: always
